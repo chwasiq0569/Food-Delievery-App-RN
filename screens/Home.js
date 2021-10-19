@@ -1,7 +1,8 @@
 import React from "react";
-import { View, StyleSheet, SafeAreaView } from "react-native";
+import { View, StyleSheet, SafeAreaView, ScrollView } from "react-native";
 import HeaderTabs from "./../components/HeaderTabs/HeaderTabs";
 import Categories from "./../components/Categories/Categories";
+import Restaurantitem from "./../components/RestaurantItem/RestaurantItem";
 
 const Home = () => {
   return (
@@ -10,6 +11,12 @@ const Home = () => {
         <HeaderTabs />
       </View>
       <Categories />
+      <ScrollView>
+        <Restaurantitem />
+        <Restaurantitem />
+        <Restaurantitem />
+        <Restaurantitem />
+      </ScrollView>
     </SafeAreaView>
   );
 };

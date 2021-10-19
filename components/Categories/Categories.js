@@ -41,33 +41,32 @@ const Categories = () => {
   ];
 
   return (
-    <ScrollView horizontal>
-      <View
-        style={{
-          backgroundColor: "#ffffff",
-          paddingVertical: 8,
-          paddingHorizontal: 8,
-        }}
-      >
-        <FlatList
-          horizontal
-          data={items}
-          renderItem={({ item }) => (
-            <View style={{ margin: 8, alignItems: "center" }}>
-              <Image
-                style={{ width: 50, height: 40, resizeMode: "contain" }}
-                source={item?.image}
-              />
-              <Text style={{ fontSize: 13, fontWeight: "700" }}>
-                {item?.text}
-              </Text>
-            </View>
-          )}
-          keyExtractor={(item) => item.text}
-        />
-        {/* <Image source={items[0]?.image} /> */}
-      </View>
-    </ScrollView>
+    <View
+      style={{
+        backgroundColor: "#ffffff",
+        paddingVertical: 8,
+        paddingHorizontal: 8,
+      }}
+    >
+      <FlatList
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        data={items}
+        renderItem={({ item }) => (
+          <View style={{ margin: 8, alignItems: "center" }}>
+            <Image
+              style={{ width: 50, height: 40, resizeMode: "contain" }}
+              source={item?.image}
+            />
+            <Text style={{ fontSize: 13, fontWeight: "700" }}>
+              {item?.text}
+            </Text>
+          </View>
+        )}
+        keyExtractor={(item) => item.text}
+      />
+      {/* <Image source={items[0]?.image} /> */}
+    </View>
   );
 };
 
