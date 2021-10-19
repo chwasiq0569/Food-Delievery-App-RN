@@ -34,7 +34,6 @@ const HeaderButton = ({
   return (
     <TouchableOpacity
       style={{
-        marginVertical: 4,
         backgroundColor: activeTab === title ? "black" : "white",
         paddingHorizontal: 16,
         paddingVertical: 6,
@@ -57,6 +56,7 @@ const styles = StyleSheet.create({
     width: "100%",
     flexDirection: "row",
     justifyContent: "center",
+    marginVertical: 4,
   },
 });
 
