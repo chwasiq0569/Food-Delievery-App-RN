@@ -1,22 +1,65 @@
 import React from "react";
-import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  Image,
+  TouchableOpacity,
+  FlatList,
+} from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+
+export const localRestaurants = [
+  {
+    name: "Beachside Bar",
+    image_url:
+      "https://static.onecms.io/wp-content/uploads/sites/9/2020/04/24/ppp-why-wont-anyone-rescue-restaurants-FT-BLOG0420.jpg",
+    categories: ["Cafe", "Bar"],
+    price: "$$",
+    reviews: 1244,
+    rating: 4.5,
+  },
+  {
+    name: "Benihana",
+    image_url:
+      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudCUyMGludGVyaW9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",
+    categories: ["Cafe", "Bar"],
+    price: "$$",
+    reviews: 1244,
+    rating: 3.7,
+  },
+  {
+    name: "India's Grill",
+    image_url:
+      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudCUyMGludGVyaW9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",
+    categories: ["Indian", "Bar"],
+    price: "$$",
+    reviews: 700,
+    rating: 4.9,
+  },
+];
 
 const Restaurantitem = () => {
   return (
-    <View style={styles.restaurantItem}>
-      <RestaurantImage />
-      <RestaurantInfo />
-    </View>
+    <FlatList
+      data={localRestaurants}
+      renderItem={({ item }) => (
+        <TouchableOpacity activeOpacity={0.5} style={styles.restaurantItem}>
+          <RestaurantImage image={item?.image_url} />
+          <RestaurantInfo name={item?.name} ratings={item?.rating} />
+        </TouchableOpacity>
+      )}
+      keyExtractor={(item) => item.name}
+    />
   );
 };
 
-const RestaurantImage = () => {
+const RestaurantImage = ({ image }) => {
   return (
     <>
       <Image
         source={{
-          uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1y8j8_0t_gw57MmD070aG8q2AD2W6cQErkM998wSlUtbU4_opVHf0cjp_RofQnhLSu54&usqp=CAU",
+          uri: image,
         }}
         style={styles.restaurantImage}
       />
@@ -27,16 +70,14 @@ const RestaurantImage = () => {
   );
 };
 
-const RestaurantInfo = () => {
+const RestaurantInfo = ({ name, ratings }) => {
   return (
     <View style={styles.cardContainer}>
       <View>
-        <Text style={styles.cardPrimaryText}>
-          Farm house kitchen Thai Cuisine
-        </Text>
+        <Text style={styles.cardPrimaryText}>{name}</Text>
         <Text style={styles.cardSecondaryText}>30 -35 min</Text>
       </View>
-      <Text style={styles.ratingText}>4.5</Text>
+      <Text style={styles.ratingText}>{ratings}</Text>
     </View>
   );
 };

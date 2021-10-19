@@ -6,6 +6,7 @@ import {
   Image,
   Text,
   FlatList,
+  TouchableOpacity,
 } from "react-native";
 
 const Categories = () => {
@@ -44,6 +45,7 @@ const Categories = () => {
     <View
       style={{
         backgroundColor: "#ffffff",
+
         paddingVertical: 8,
         paddingHorizontal: 8,
       }}
@@ -53,7 +55,10 @@ const Categories = () => {
         showsHorizontalScrollIndicator={false}
         data={items}
         renderItem={({ item }) => (
-          <View style={{ margin: 8, alignItems: "center" }}>
+          <TouchableOpacity
+            activeOpacity={0.5}
+            style={{ margin: 8, alignItems: "center" }}
+          >
             <Image
               style={{ width: 50, height: 40, resizeMode: "contain" }}
               source={item?.image}
@@ -61,7 +66,7 @@ const Categories = () => {
             <Text style={{ fontSize: 13, fontWeight: "700" }}>
               {item?.text}
             </Text>
-          </View>
+          </TouchableOpacity>
         )}
         keyExtractor={(item) => item.text}
       />

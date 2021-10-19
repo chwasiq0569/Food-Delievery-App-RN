@@ -11,12 +11,12 @@ const Home = () => {
         <HeaderTabs />
       </View>
       <Categories />
-      <ScrollView>
-        <Restaurantitem />
-        <Restaurantitem />
-        <Restaurantitem />
-        <Restaurantitem />
-      </ScrollView>
+      {/* <ScrollView> */}
+      <Restaurantitem />
+      {/* <Restaurantitem /> */}
+      {/* <Restaurantitem /> */}
+      {/* <Restaurantitem /> */}
+      {/* </ScrollView> */}
     </SafeAreaView>
   );
 };
