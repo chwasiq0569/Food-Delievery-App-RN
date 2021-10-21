@@ -40,37 +40,46 @@ export const localRestaurants = [
 ];
 
 const Restaurantitem = () => {
-
   const [restaurantItems, setRestaurantItems] = React.useState([]);
 
-  const city= "north-india-restaurant-san-francisco";
-  const YELP_API_KEY = "QJV79o-y2Sj6JaJPI6HY84dfOUQU6kJYfOpTPg3E8ags2JqfkrujzcTb-l4taImCFlON6KedsWq5T1WxUe6NfWmSiKLGw92HkKyBSHqsvGzeMc4G7j9HQVip3I1uYXYx";
+  const city = "north-india-restaurant-san-francisco";
+  const YELP_API_KEY =
+    "QJV79o-y2Sj6JaJPI6HY84dfOUQU6kJYfOpTPg3E8ags2JqfkrujzcTb-l4taImCFlON6KedsWq5T1WxUe6NfWmSiKLGw92HkKyBSHqsvGzeMc4G7j9HQVip3I1uYXYx";
 
   const fetchingRestaurants = () => {
-    fetch(`https://api.yelp.com/v3/businesses/search?term=restaurants&location=north-india-restaurant-san-francisco`, {
-      headers: {
-        Authorization: `Bearer ${YELP_API_KEY}`,
-      },
-    }).then(res => res.json()).then(data => { 
-      setRestaurantItems(data.businesses)
-    })
-  }
+    fetch(
+      `https://api.yelp.com/v3/businesses/search?term=restaurants&location=north-india-restaurant-san-francisco`,
+      {
+        headers: {
+          Authorization: `Bearer ${YELP_API_KEY}`,
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        data && setRestaurantItems([...data.businesses]);
+      });
+  };
 
   React.useEffect(() => {
     fetchingRestaurants();
-  }, [])
+  }, []);
 
   return (
-    restaurantItems && <FlatList
-      data={restaurantItems}
-      renderItem={({ item }) => (
-        <TouchableOpacity activeOpacity={0.5} style={styles.restaurantItem}>
-          <RestaurantImage image={item?.image_url} />
-          <RestaurantInfo name={item?.name} ratings={item?.rating} />
-        </TouchableOpacity>
+    <>
+      {restaurantItems && (
+        <FlatList
+          data={restaurantItems}
+          renderItem={({ item }) => (
+            <TouchableOpacity activeOpacity={0.5} style={styles.restaurantItem}>
+              <RestaurantImage image={item?.image_url} />
+              <RestaurantInfo name={item?.name} ratings={item?.rating} />
+            </TouchableOpacity>
+          )}
+          keyExtractor={(item) => item.id}
+        />
       )}
-      keyExtractor={(item) => item.id}
-    />
+    </>
   );
 };
 

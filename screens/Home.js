@@ -3,6 +3,8 @@ import { View, StyleSheet, SafeAreaView, ScrollView } from "react-native";
 import HeaderTabs from "./../components/HeaderTabs/HeaderTabs";
 import Categories from "./../components/Categories/Categories";
 import Restaurantitem from "./../components/RestaurantItem/RestaurantItem";
+import { Divider } from "react-native-elements";
+import BottomTabs from "../components/BottomTabs/BottomTabs";
 
 const Home = () => {
   return (
@@ -17,6 +19,8 @@ const Home = () => {
       {/* <Restaurantitem /> */}
       {/* <Restaurantitem /> */}
       {/* </ScrollView> */}
+      <Divider />
+      <BottomTabs />
     </SafeAreaView>
   );
 };
