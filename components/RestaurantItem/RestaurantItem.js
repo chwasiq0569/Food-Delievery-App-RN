@@ -89,7 +89,7 @@ const Restaurantitem = ({ navigation }) => {
               <RestaurantInfo name={item?.name} ratings={item?.rating} />
             </TouchableOpacity>
           )}
-          keyExtractor={(item) => item.name}
+          keyExtractor={(item) => item.id}
         />
       )}
     </>

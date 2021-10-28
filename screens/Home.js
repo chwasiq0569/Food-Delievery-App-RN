@@ -1,11 +1,10 @@
 import React from "react";
 import { View, StyleSheet, SafeAreaView, ScrollView } from "react-native";
-// import HeaderTabs from "../components/BottomTabs/HeaderTabs/HeaderTabs";
+import HeaderTabs from "./../components/HeaderTabs/HeaderTabs";
 import Categories from "./../components/Categories/Categories";
 import Restaurantitem from "./../components/RestaurantItem/RestaurantItem";
 import { Divider } from "react-native-elements";
 import BottomTabs from "../components/BottomTabs/BottomTabs";
-import HeaderTabs from "./../components/BottomTabs/HeaderTabs/HeaderTabs";
 
 const Home = ({ navigation }) => {
   return (
