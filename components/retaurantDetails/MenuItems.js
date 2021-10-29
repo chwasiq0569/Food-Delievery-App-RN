@@ -8,6 +8,7 @@ import {
   ScrollView,
 } from "react-native";
 import { Divider } from "react-native-elements";
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 const foods = [
   {
@@ -55,24 +56,30 @@ const MenuItems = () => {
   return (
     <>
       {foods && (
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          data={foods}
-          renderItem={({ item }) => (
-            <>
-              <View style={styles.menuItemStyles}>
-                <FoodInfo food={item} />
-                <FoodImage food={item} />
-              </View>
-              <Divider
-                width={0.5}
-                orientation="vertical"
-                style={{ marginHorizontal: 20 }}
-              />
-            </>
-          )}
-          keyExtractor={(item) => item.title}
-        />
+        <>
+          <FlatList
+            showsVerticalScrollIndicator={false}
+            data={foods}
+            renderItem={({ item }) => (
+              <>
+                <View style={styles.menuItemStyles}>
+                  <BouncyCheckbox
+                    iconStyle={{ borderColor: "lightgray", borderRadius: 0 }}
+                    fillColor="green"
+                  />
+                  <FoodInfo food={item} />
+                  <FoodImage food={item} />
+                </View>
+                <Divider
+                  width={0.5}
+                  orientation="vertical"
+                  style={{ marginHorizontal: 20 }}
+                />
+              </>
+            )}
+            keyExtractor={(item) => item.title}
+          />
+        </>
       )}
     </>
   );
