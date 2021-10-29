@@ -3,6 +3,7 @@ import { View, StyleSheet, Text, Image } from "react-native";
 import { Divider } from "react-native-elements";
 import MenuItems from "../components/retaurantDetails/MenuItems";
 import About from "./../components/retaurantDetails/About";
+import ViewCart from "./../components/retaurantDetails/ViewCart";
 
 const Restaurantdetails = ({ route }) => {
   return (
@@ -10,6 +11,7 @@ const Restaurantdetails = ({ route }) => {
       <About route={route} />
       <Divider width={1.8} style={{ marginVertical: 20 }} />
       <MenuItems />
+      <ViewCart />
     </View>
   );
 };

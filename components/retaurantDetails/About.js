@@ -1,5 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Text, Image } from "react-native";
+import ViewCart from "./ViewCart";
 
 const About = (props) => {
   const { name, image_url, categories, price, reviews, rating } =
@@ -10,7 +11,6 @@ const About = (props) => {
   const description = `${formattedCategories} ${
     price ? " • " + price : ""
   } • ${rating} ☆ (${reviews})`;
-
   return (
     <View>
       <RestaurantImage image={image_url} />
