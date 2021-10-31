@@ -1,8 +1,10 @@
 import React from "react";
-import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity, Modal } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 
 const ViewCart = () => {
+  const [modalVisible, setModalVisible] = React.useState(false);
+
   const items = useSelector((state) => state.cartReducer.selectedItems.items);
 
   const total = items
@@ -18,29 +20,76 @@ const ViewCart = () => {
 
   console.log("totalUSD", totalUSD);
 
-  return total ? (
-    <View style={styles.viewCartContainer}>
+  const checkoutModalContent = () => {
+    return (
       <View
         style={{
-          flexDirection: "row",
+          flex: 1,
           justifyContent: "center",
-          width: "100%",
+          alignItems: "center",
+          marginTop: 30,
         }}
       >
-        <TouchableOpacity style={styles.viewCartButton}>
-          <Text
-            style={{ color: "white", flex: 1, paddingLeft: 100, fontSize: 16 }}
-          >
-            View Cart
-          </Text>
-          <Text style={{ color: "white", fontSize: 16, paddingRight: 5 }}>
-            {totalUSD}
-          </Text>
-        </TouchableOpacity>
+        <View
+          style={{
+            backgroundColor: "black",
+            padding: 10,
+            borderRadius: 30,
+            width: 150,
+            alignItems: "center",
+          }}
+        >
+          <TouchableOpacity onPress={() => setModalVisible(false)}>
+            <Text style={{ color: "white" }}>Checkout</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
-  ) : (
-    <></>
+    );
+  };
+
+  return (
+    <>
+      <Modal
+        animationType="slide"
+        visible={modalVisible}
+        transparent={true}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        {checkoutModalContent()}
+      </Modal>
+      {total ? (
+        <View style={styles.viewCartContainer}>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "center",
+              width: "100%",
+            }}
+          >
+            <TouchableOpacity
+              style={styles.viewCartButton}
+              onPress={() => setModalVisible(true)}
+            >
+              <Text
+                style={{
+                  color: "white",
+                  flex: 1,
+                  paddingLeft: 100,
+                  fontSize: 16,
+                }}
+              >
+                View Cart
+              </Text>
+              <Text style={{ color: "white", fontSize: 16, paddingRight: 5 }}>
+                {totalUSD}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      ) : (
+        <></>
+      )}
+    </>
   );
 };
 
