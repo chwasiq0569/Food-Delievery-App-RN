@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { Divider } from "react-native-elements";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
+import { useDispatch, useSelector } from "react-redux";
 
 const foods = [
   {
@@ -52,7 +53,22 @@ const foods = [
   },
 ];
 
-const MenuItems = () => {
+const MenuItems = ({ restaurantName }) => {
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.cartReducer);
+
+  const selectItem = (item, checkboxValue) =>
+    dispatch({
+      type: "ADD_TO_CART",
+      payload: {
+        ...item,
+        restaurantName: restaurantName,
+        checkboxValue: checkboxValue,
+      },
+    });
+
+  console.log("state", state);
+
   return (
     <>
       {foods && (
@@ -66,6 +82,7 @@ const MenuItems = () => {
                   <BouncyCheckbox
                     iconStyle={{ borderColor: "lightgray", borderRadius: 0 }}
                     fillColor="green"
+                    onPress={(checkboxValue) => selectItem(item, checkboxValue)}
                   />
                   <FoodInfo food={item} />
                   <FoodImage food={item} />
