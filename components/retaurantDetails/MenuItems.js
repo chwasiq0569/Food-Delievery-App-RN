@@ -55,7 +55,9 @@ const foods = [
 
 const MenuItems = ({ restaurantName }) => {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.cartReducer);
+  const cartItems = useSelector(
+    (state) => state.cartReducer.selectedItems.items
+  );
 
   const selectItem = (item, checkboxValue) =>
     dispatch({
@@ -67,7 +69,11 @@ const MenuItems = ({ restaurantName }) => {
       },
     });
 
-  console.log("state", state);
+  console.log("cartItems", cartItems);
+
+  const isFoodInCart = (food, cartItems) => {
+    return Boolean(cartItems.find((item) => item.title === food.title));
+  };
 
   return (
     <>
@@ -83,6 +89,7 @@ const MenuItems = ({ restaurantName }) => {
                     iconStyle={{ borderColor: "lightgray", borderRadius: 0 }}
                     fillColor="green"
                     onPress={(checkboxValue) => selectItem(item, checkboxValue)}
+                    isChecked={isFoodInCart(item, cartItems)}
                   />
                   <FoodInfo food={item} />
                   <FoodImage food={item} />
