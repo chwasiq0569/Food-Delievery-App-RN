@@ -24,13 +24,7 @@ const HeaderTabs = () => {
   );
 };
 
-const HeaderButton = ({
-  title,
-  textColor,
-  buttonColor,
-  activeTab,
-  setActiveTab,
-}) => {
+const HeaderButton = ({ title, activeTab, setActiveTab }) => {
   return (
     <TouchableOpacity
       style={{

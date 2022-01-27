@@ -13,12 +13,7 @@ const Home = ({ navigation }) => {
         <HeaderTabs />
       </View>
       <Categories />
-      {/* <ScrollView> */}
       <Restaurantitem navigation={navigation} />
-      {/* <Restaurantitem /> */}
-      {/* <Restaurantitem /> */}
-      {/* <Restaurantitem /> */}
-      {/* </ScrollView> */}
       <Divider />
       <BottomTabs />
     </SafeAreaView>
