@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text, Image } from "react-native";
+import { View } from "react-native";
 import { Divider } from "react-native-elements";
 import MenuItems from "../components/retaurantDetails/MenuItems";
 import About from "./../components/retaurantDetails/About";
